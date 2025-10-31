@@ -1,0 +1,337 @@
+2025-10-31 00:16:35.954 -03:00 [INF] User profile is available. Using 'C:\Users\eduar\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-10-31 00:16:36.175 -03:00 [INF] Now listening on: https://localhost:5001
+2025-10-31 00:16:36.177 -03:00 [INF] Now listening on: http://localhost:5000
+2025-10-31 00:16:36.222 -03:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-10-31 00:16:36.223 -03:00 [INF] Hosting environment: Development
+2025-10-31 00:16:36.224 -03:00 [INF] Content root path: C:\Users\eduar\source\repos\ejmossmann-avanade-api\AvanadeBlog.Api
+2025-10-31 00:16:36.853 -03:00 [INF] Request starting HTTP/2 GET https://localhost:5001/_vs/browserLink - null null
+2025-10-31 00:16:36.853 -03:00 [INF] Request starting HTTP/2 GET https://localhost:5001/_framework/aspnetcore-browser-refresh.js - null null
+2025-10-31 00:16:36.873 -03:00 [INF] Request finished HTTP/2 GET https://localhost:5001/_framework/aspnetcore-browser-refresh.js - 200 16515 application/javascript; charset=utf-8 21.5829ms
+2025-10-31 00:16:36.892 -03:00 [INF] Request finished HTTP/2 GET https://localhost:5001/_vs/browserLink - 200 null text/javascript; charset=UTF-8 42.4629ms
+2025-10-31 00:16:36.937 -03:00 [INF] Request starting HTTP/2 GET https://localhost:5001/swagger/v1/swagger.json - null null
+2025-10-31 00:16:36.952 -03:00 [INF] HTTP GET /swagger/v1/swagger.json responded 200 in 10.0799 ms
+2025-10-31 00:16:36.955 -03:00 [INF] Request finished HTTP/2 GET https://localhost:5001/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 18.1467ms
+2025-10-31 00:16:56.166 -03:00 [INF] Request starting HTTP/2 GET https://localhost:5001/api/posts - null null
+2025-10-31 00:16:56.241 -03:00 [INF] Executing endpoint 'AvanadeBlog.Api.Controllers.PostController.GetAsync (AvanadeBlog.Api)'
+2025-10-31 00:16:56.253 -03:00 [INF] Route matched with {action = "Get", controller = "Post"}. Executing controller action with signature System.Threading.Tasks.Task`1[AvanadeBlog.Domain.PaginatedResult`1[AvanadeBlog.Application.Models.Post.PostResponse]] GetAsync(AvanadeBlog.Domain.FilterParams.PostFilterParams) on controller AvanadeBlog.Api.Controllers.PostController (AvanadeBlog.Api).
+2025-10-31 00:16:56.497 -03:00 [WRN] Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development.
+2025-10-31 00:16:56.594 -03:00 [WRN] You do not have a valid license key for the Lucky Penny software AutoMapper. This is allowed for development and testing scenarios. If you are running in production you are required to have a licensed version. Please visit https://luckypennysoftware.com to obtain a valid license.
+2025-10-31 00:16:56.610 -03:00 [INF] PostController - GetAsync. Request: AvanadeBlog.Domain.FilterParams.PostFilterParams
+2025-10-31 00:16:56.892 -03:00 [INF] Executed DbCommand (15ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Blog] AS [b]
+2025-10-31 00:16:57.169 -03:00 [INF] Executed DbCommand (10ms) [Parameters=[@__p_0='0', @__p_1='9999'], CommandType='"Text"', CommandTimeout='30']
+SELECT [b0].[Id], [b0].[Content], [b0].[Created], [b0].[CreatedBy], [b0].[Title], [c].[Id], [c].[Content], [c].[Created], [c].[CreatedBy], [c].[PostEntityId], [c].[Title]
+FROM (
+    SELECT [b].[Id], [b].[Content], [b].[Created], [b].[CreatedBy], [b].[Title]
+    FROM [Blog] AS [b]
+    ORDER BY [b].[Created] DESC
+    OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+) AS [b0]
+LEFT JOIN [CommentEntity] AS [c] ON [b0].[Id] = [c].[PostEntityId]
+ORDER BY [b0].[Created] DESC, [b0].[Id]
+2025-10-31 00:16:57.183 -03:00 [INF] PostService - GetAsync success. Response: AvanadeBlog.Domain.PaginatedResult`1[AvanadeBlog.Application.Models.Post.PostResponse]
+2025-10-31 00:16:57.187 -03:00 [INF] Executing ObjectResult, writing value of type 'AvanadeBlog.Domain.PaginatedResult`1[[AvanadeBlog.Application.Models.Post.PostResponse, AvanadeBlog.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-10-31 00:16:57.194 -03:00 [INF] Executed action AvanadeBlog.Api.Controllers.PostController.GetAsync (AvanadeBlog.Api) in 939.0479ms
+2025-10-31 00:16:57.195 -03:00 [INF] Executed endpoint 'AvanadeBlog.Api.Controllers.PostController.GetAsync (AvanadeBlog.Api)'
+2025-10-31 00:16:57.196 -03:00 [INF] HTTP GET /api/posts responded 200 in 1026.8954 ms
+2025-10-31 00:16:57.200 -03:00 [INF] Request finished HTTP/2 GET https://localhost:5001/api/posts - 200 null application/json; charset=utf-8 1034.3043ms
+2025-10-31 00:17:02.344 -03:00 [INF] Request starting HTTP/2 POST https://localhost:5001/api/posts - application/json 53
+2025-10-31 00:17:02.349 -03:00 [INF] Authorization failed. These requirements were not met:
+RolesAuthorizationRequirement:User.IsInRole must be true for one of the following roles: (ADMIN)
+2025-10-31 00:17:02.352 -03:00 [INF] AuthenticationScheme: Bearer was forbidden.
+2025-10-31 00:17:02.352 -03:00 [INF] HTTP POST /api/posts responded 403 in 5.4390 ms
+2025-10-31 00:17:02.353 -03:00 [INF] Request finished HTTP/2 POST https://localhost:5001/api/posts - 403 0 null 8.9871ms
+2025-10-31 00:17:10.876 -03:00 [INF] Request starting HTTP/2 POST https://localhost:5001/api/login - application/json 54
+2025-10-31 00:17:10.879 -03:00 [INF] Executing endpoint 'AvanadeBlog.Api.Controllers.LoginController.Login (AvanadeBlog.Api)'
+2025-10-31 00:17:10.882 -03:00 [INF] Route matched with {action = "Login", controller = "Login"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Login(Microsoft.AspNetCore.Identity.Data.LoginRequest) on controller AvanadeBlog.Api.Controllers.LoginController (AvanadeBlog.Api).
+2025-10-31 00:17:10.898 -03:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType0`1[[System.String, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-10-31 00:17:10.900 -03:00 [INF] Executed action AvanadeBlog.Api.Controllers.LoginController.Login (AvanadeBlog.Api) in 17.0764ms
+2025-10-31 00:17:10.901 -03:00 [INF] Executed endpoint 'AvanadeBlog.Api.Controllers.LoginController.Login (AvanadeBlog.Api)'
+2025-10-31 00:17:10.902 -03:00 [INF] HTTP POST /api/login responded 200 in 23.6029 ms
+2025-10-31 00:17:10.903 -03:00 [INF] Request finished HTTP/2 POST https://localhost:5001/api/login - 200 null application/json; charset=utf-8 26.6997ms
+2025-10-31 00:17:18.699 -03:00 [INF] Request starting HTTP/2 POST https://localhost:5001/api/posts - application/json 53
+2025-10-31 00:17:18.702 -03:00 [INF] Authorization failed. These requirements were not met:
+RolesAuthorizationRequirement:User.IsInRole must be true for one of the following roles: (USER)
+2025-10-31 00:17:18.703 -03:00 [INF] AuthenticationScheme: Bearer was forbidden.
+2025-10-31 00:17:18.703 -03:00 [INF] HTTP POST /api/posts responded 403 in 2.6194 ms
+2025-10-31 00:17:18.705 -03:00 [INF] Request finished HTTP/2 POST https://localhost:5001/api/posts - 403 0 null 5.9677ms
+2025-10-31 00:17:20.014 -03:00 [INF] Request starting HTTP/2 POST https://localhost:5001/api/posts - application/json 53
+2025-10-31 00:17:20.017 -03:00 [INF] Authorization failed. These requirements were not met:
+RolesAuthorizationRequirement:User.IsInRole must be true for one of the following roles: (USER)
+2025-10-31 00:17:20.018 -03:00 [INF] AuthenticationScheme: Bearer was forbidden.
+2025-10-31 00:17:20.019 -03:00 [INF] HTTP POST /api/posts responded 403 in 2.1598 ms
+2025-10-31 00:17:20.020 -03:00 [INF] Request finished HTTP/2 POST https://localhost:5001/api/posts - 403 0 null 5.801ms
+2025-10-31 00:17:20.195 -03:00 [INF] Request starting HTTP/2 POST https://localhost:5001/api/posts - application/json 53
+2025-10-31 00:17:20.198 -03:00 [INF] Authorization failed. These requirements were not met:
+RolesAuthorizationRequirement:User.IsInRole must be true for one of the following roles: (USER)
+2025-10-31 00:17:20.198 -03:00 [INF] AuthenticationScheme: Bearer was forbidden.
+2025-10-31 00:17:20.199 -03:00 [INF] HTTP POST /api/posts responded 403 in 1.6303 ms
+2025-10-31 00:17:20.200 -03:00 [INF] Request finished HTTP/2 POST https://localhost:5001/api/posts - 403 0 null 4.9088ms
+2025-10-31 00:17:20.382 -03:00 [INF] Request starting HTTP/2 POST https://localhost:5001/api/posts - application/json 53
+2025-10-31 00:17:20.384 -03:00 [INF] Authorization failed. These requirements were not met:
+RolesAuthorizationRequirement:User.IsInRole must be true for one of the following roles: (USER)
+2025-10-31 00:17:20.385 -03:00 [INF] AuthenticationScheme: Bearer was forbidden.
+2025-10-31 00:17:20.385 -03:00 [INF] HTTP POST /api/posts responded 403 in 1.5855 ms
+2025-10-31 00:17:20.387 -03:00 [INF] Request finished HTTP/2 POST https://localhost:5001/api/posts - 403 0 null 4.4779ms
+2025-10-31 00:17:20.536 -03:00 [INF] Request starting HTTP/2 POST https://localhost:5001/api/posts - application/json 53
+2025-10-31 00:17:20.538 -03:00 [INF] Authorization failed. These requirements were not met:
+RolesAuthorizationRequirement:User.IsInRole must be true for one of the following roles: (USER)
+2025-10-31 00:17:20.539 -03:00 [INF] AuthenticationScheme: Bearer was forbidden.
+2025-10-31 00:17:20.539 -03:00 [INF] HTTP POST /api/posts responded 403 in 1.8355 ms
+2025-10-31 00:17:20.541 -03:00 [INF] Request finished HTTP/2 POST https://localhost:5001/api/posts - 403 0 null 4.8357ms
+2025-10-31 00:18:03.656 -03:00 [INF] User profile is available. Using 'C:\Users\eduar\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-10-31 00:18:03.820 -03:00 [INF] Now listening on: https://localhost:5001
+2025-10-31 00:18:03.822 -03:00 [INF] Now listening on: http://localhost:5000
+2025-10-31 00:18:03.884 -03:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-10-31 00:18:03.885 -03:00 [INF] Hosting environment: Development
+2025-10-31 00:18:03.886 -03:00 [INF] Content root path: C:\Users\eduar\source\repos\ejmossmann-avanade-api\AvanadeBlog.Api
+2025-10-31 00:18:03.988 -03:00 [INF] Request starting HTTP/2 GET https://localhost:5001/_framework/aspnetcore-browser-refresh.js - null null
+2025-10-31 00:18:03.988 -03:00 [INF] Request starting HTTP/2 GET https://localhost:5001/_vs/browserLink - null null
+2025-10-31 00:18:03.999 -03:00 [INF] Request finished HTTP/2 GET https://localhost:5001/_framework/aspnetcore-browser-refresh.js - 200 16515 application/javascript; charset=utf-8 14.0403ms
+2025-10-31 00:18:04.023 -03:00 [INF] Request finished HTTP/2 GET https://localhost:5001/_vs/browserLink - 200 null text/javascript; charset=UTF-8 37.9516ms
+2025-10-31 00:18:04.047 -03:00 [INF] Request starting HTTP/2 GET https://localhost:5001/swagger/v1/swagger.json - null null
+2025-10-31 00:18:04.061 -03:00 [INF] HTTP GET /swagger/v1/swagger.json responded 200 in 8.7498 ms
+2025-10-31 00:18:04.063 -03:00 [INF] Request finished HTTP/2 GET https://localhost:5001/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 16.2831ms
+2025-10-31 00:21:28.756 -03:00 [INF] Request starting HTTP/2 POST https://localhost:5001/api/posts - application/json 53
+2025-10-31 00:21:28.828 -03:00 [INF] Authorization failed. These requirements were not met:
+RolesAuthorizationRequirement:User.IsInRole must be true for one of the following roles: (USER)
+2025-10-31 00:21:28.830 -03:00 [INF] AuthenticationScheme: Bearer was forbidden.
+2025-10-31 00:21:28.830 -03:00 [INF] HTTP POST /api/posts responded 403 in 72.8889 ms
+2025-10-31 00:21:28.832 -03:00 [INF] Request finished HTTP/2 POST https://localhost:5001/api/posts - 403 0 null 75.9665ms
+2025-10-31 00:21:31.932 -03:00 [INF] Request starting HTTP/2 POST https://localhost:5001/api/login - application/json 54
+2025-10-31 00:21:31.938 -03:00 [INF] Executing endpoint 'AvanadeBlog.Api.Controllers.LoginController.Login (AvanadeBlog.Api)'
+2025-10-31 00:21:31.950 -03:00 [INF] Route matched with {action = "Login", controller = "Login"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Login(Microsoft.AspNetCore.Identity.Data.LoginRequest) on controller AvanadeBlog.Api.Controllers.LoginController (AvanadeBlog.Api).
+2025-10-31 00:21:31.976 -03:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType0`1[[System.String, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-10-31 00:21:31.980 -03:00 [INF] Executed action AvanadeBlog.Api.Controllers.LoginController.Login (AvanadeBlog.Api) in 27.7226ms
+2025-10-31 00:21:31.981 -03:00 [INF] Executed endpoint 'AvanadeBlog.Api.Controllers.LoginController.Login (AvanadeBlog.Api)'
+2025-10-31 00:21:31.982 -03:00 [INF] HTTP POST /api/login responded 200 in 47.2842 ms
+2025-10-31 00:21:31.983 -03:00 [INF] Request finished HTTP/2 POST https://localhost:5001/api/login - 200 null application/json; charset=utf-8 51.1035ms
+2025-10-31 00:22:29.287 -03:00 [INF] Request starting HTTP/2 POST https://localhost:5001/api/posts - application/json 53
+2025-10-31 00:22:29.292 -03:00 [INF] Authorization failed. These requirements were not met:
+RolesAuthorizationRequirement:User.IsInRole must be true for one of the following roles: (USER)
+2025-10-31 00:22:29.293 -03:00 [INF] AuthenticationScheme: Bearer was forbidden.
+2025-10-31 00:22:29.294 -03:00 [INF] HTTP POST /api/posts responded 403 in 2.1922 ms
+2025-10-31 00:22:29.295 -03:00 [INF] Request finished HTTP/2 POST https://localhost:5001/api/posts - 403 0 null 7.3954ms
+2025-10-31 00:22:37.341 -03:00 [INF] User profile is available. Using 'C:\Users\eduar\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-10-31 00:22:37.652 -03:00 [INF] Now listening on: https://localhost:5001
+2025-10-31 00:22:37.654 -03:00 [INF] Now listening on: http://localhost:5000
+2025-10-31 00:22:37.740 -03:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-10-31 00:22:37.741 -03:00 [INF] Hosting environment: Development
+2025-10-31 00:22:37.742 -03:00 [INF] Content root path: C:\Users\eduar\source\repos\ejmossmann-avanade-api\AvanadeBlog.Api
+2025-10-31 00:22:39.096 -03:00 [INF] Request starting HTTP/2 GET https://localhost:5001/_vs/browserLink - null null
+2025-10-31 00:22:39.096 -03:00 [INF] Request starting HTTP/2 GET https://localhost:5001/_framework/aspnetcore-browser-refresh.js - null null
+2025-10-31 00:22:39.112 -03:00 [INF] Request finished HTTP/2 GET https://localhost:5001/_framework/aspnetcore-browser-refresh.js - 200 16515 application/javascript; charset=utf-8 18.3995ms
+2025-10-31 00:22:39.129 -03:00 [INF] Request finished HTTP/2 GET https://localhost:5001/_vs/browserLink - 200 null text/javascript; charset=UTF-8 35.1356ms
+2025-10-31 00:22:39.739 -03:00 [INF] Request starting HTTP/2 GET https://localhost:5001/swagger/v1/swagger.json - null null
+2025-10-31 00:22:39.753 -03:00 [INF] HTTP GET /swagger/v1/swagger.json responded 200 in 9.1850 ms
+2025-10-31 00:22:39.756 -03:00 [INF] Request finished HTTP/2 GET https://localhost:5001/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 16.6662ms
+2025-10-31 00:22:52.386 -03:00 [INF] Request starting HTTP/2 POST https://localhost:5001/api/login - application/json 54
+2025-10-31 00:22:52.460 -03:00 [INF] Executing endpoint 'AvanadeBlog.Api.Controllers.LoginController.Login (AvanadeBlog.Api)'
+2025-10-31 00:22:52.470 -03:00 [INF] Route matched with {action = "Login", controller = "Login"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Login(Microsoft.AspNetCore.Identity.Data.LoginRequest) on controller AvanadeBlog.Api.Controllers.LoginController (AvanadeBlog.Api).
+2025-10-31 00:22:52.497 -03:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType0`1[[System.String, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-10-31 00:22:52.501 -03:00 [INF] Executed action AvanadeBlog.Api.Controllers.LoginController.Login (AvanadeBlog.Api) in 27.7218ms
+2025-10-31 00:22:52.503 -03:00 [INF] Executed endpoint 'AvanadeBlog.Api.Controllers.LoginController.Login (AvanadeBlog.Api)'
+2025-10-31 00:22:52.503 -03:00 [INF] HTTP POST /api/login responded 200 in 112.6815 ms
+2025-10-31 00:22:52.505 -03:00 [INF] Request finished HTTP/2 POST https://localhost:5001/api/login - 200 null application/json; charset=utf-8 118.7299ms
+2025-10-31 00:23:01.904 -03:00 [INF] Request starting HTTP/2 POST https://localhost:5001/api/posts - application/json 53
+2025-10-31 00:23:01.911 -03:00 [INF] Authorization failed. These requirements were not met:
+RolesAuthorizationRequirement:User.IsInRole must be true for one of the following roles: (USER)
+2025-10-31 00:23:01.913 -03:00 [INF] AuthenticationScheme: Bearer was forbidden.
+2025-10-31 00:23:01.914 -03:00 [INF] HTTP POST /api/posts responded 403 in 7.1617 ms
+2025-10-31 00:23:01.915 -03:00 [INF] Request finished HTTP/2 POST https://localhost:5001/api/posts - 403 0 null 11.0189ms
+2025-10-31 00:23:08.587 -03:00 [INF] Request starting HTTP/2 POST https://localhost:5001/api/posts - application/json 53
+2025-10-31 00:23:08.591 -03:00 [INF] Authorization failed. These requirements were not met:
+RolesAuthorizationRequirement:User.IsInRole must be true for one of the following roles: (USER)
+2025-10-31 00:23:08.591 -03:00 [INF] AuthenticationScheme: Bearer was forbidden.
+2025-10-31 00:23:08.592 -03:00 [INF] HTTP POST /api/posts responded 403 in 2.7794 ms
+2025-10-31 00:23:08.593 -03:00 [INF] Request finished HTTP/2 POST https://localhost:5001/api/posts - 403 0 null 6.4009ms
+2025-10-31 00:23:09.021 -03:00 [INF] Request starting HTTP/2 POST https://localhost:5001/api/posts - application/json 53
+2025-10-31 00:23:09.024 -03:00 [INF] Authorization failed. These requirements were not met:
+RolesAuthorizationRequirement:User.IsInRole must be true for one of the following roles: (USER)
+2025-10-31 00:23:09.025 -03:00 [INF] AuthenticationScheme: Bearer was forbidden.
+2025-10-31 00:23:09.026 -03:00 [INF] HTTP POST /api/posts responded 403 in 3.0227 ms
+2025-10-31 00:23:09.027 -03:00 [INF] Request finished HTTP/2 POST https://localhost:5001/api/posts - 403 0 null 6.4892ms
+2025-10-31 00:23:09.216 -03:00 [INF] Request starting HTTP/2 POST https://localhost:5001/api/posts - application/json 53
+2025-10-31 00:23:09.218 -03:00 [INF] Authorization failed. These requirements were not met:
+RolesAuthorizationRequirement:User.IsInRole must be true for one of the following roles: (USER)
+2025-10-31 00:23:09.219 -03:00 [INF] AuthenticationScheme: Bearer was forbidden.
+2025-10-31 00:23:09.219 -03:00 [INF] HTTP POST /api/posts responded 403 in 1.4830 ms
+2025-10-31 00:23:09.220 -03:00 [INF] Request finished HTTP/2 POST https://localhost:5001/api/posts - 403 0 null 4.576ms
+2025-10-31 00:23:09.331 -03:00 [INF] Request starting HTTP/2 POST https://localhost:5001/api/posts - application/json 53
+2025-10-31 00:23:09.333 -03:00 [INF] Authorization failed. These requirements were not met:
+RolesAuthorizationRequirement:User.IsInRole must be true for one of the following roles: (USER)
+2025-10-31 00:23:09.334 -03:00 [INF] AuthenticationScheme: Bearer was forbidden.
+2025-10-31 00:23:09.335 -03:00 [INF] HTTP POST /api/posts responded 403 in 1.7365 ms
+2025-10-31 00:23:09.336 -03:00 [INF] Request finished HTTP/2 POST https://localhost:5001/api/posts - 403 0 null 4.9866ms
+2025-10-31 00:23:11.630 -03:00 [INF] Request starting HTTP/2 POST https://localhost:5001/api/login - application/json 54
+2025-10-31 00:23:11.633 -03:00 [INF] Executing endpoint 'AvanadeBlog.Api.Controllers.LoginController.Login (AvanadeBlog.Api)'
+2025-10-31 00:23:11.634 -03:00 [INF] Route matched with {action = "Login", controller = "Login"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Login(Microsoft.AspNetCore.Identity.Data.LoginRequest) on controller AvanadeBlog.Api.Controllers.LoginController (AvanadeBlog.Api).
+2025-10-31 00:23:11.636 -03:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType0`1[[System.String, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-10-31 00:23:11.637 -03:00 [INF] Executed action AvanadeBlog.Api.Controllers.LoginController.Login (AvanadeBlog.Api) in 2.1743ms
+2025-10-31 00:23:11.638 -03:00 [INF] Executed endpoint 'AvanadeBlog.Api.Controllers.LoginController.Login (AvanadeBlog.Api)'
+2025-10-31 00:23:11.639 -03:00 [INF] HTTP POST /api/login responded 200 in 6.3596 ms
+2025-10-31 00:23:11.640 -03:00 [INF] Request finished HTTP/2 POST https://localhost:5001/api/login - 200 null application/json; charset=utf-8 9.5643ms
+2025-10-31 00:23:12.052 -03:00 [INF] Request starting HTTP/2 POST https://localhost:5001/api/login - application/json 54
+2025-10-31 00:23:12.055 -03:00 [INF] Executing endpoint 'AvanadeBlog.Api.Controllers.LoginController.Login (AvanadeBlog.Api)'
+2025-10-31 00:23:12.056 -03:00 [INF] Route matched with {action = "Login", controller = "Login"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Login(Microsoft.AspNetCore.Identity.Data.LoginRequest) on controller AvanadeBlog.Api.Controllers.LoginController (AvanadeBlog.Api).
+2025-10-31 00:23:12.057 -03:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType0`1[[System.String, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-10-31 00:23:12.058 -03:00 [INF] Executed action AvanadeBlog.Api.Controllers.LoginController.Login (AvanadeBlog.Api) in 1.5344ms
+2025-10-31 00:23:12.059 -03:00 [INF] Executed endpoint 'AvanadeBlog.Api.Controllers.LoginController.Login (AvanadeBlog.Api)'
+2025-10-31 00:23:12.060 -03:00 [INF] HTTP POST /api/login responded 200 in 5.3676 ms
+2025-10-31 00:23:12.061 -03:00 [INF] Request finished HTTP/2 POST https://localhost:5001/api/login - 200 null application/json; charset=utf-8 8.661ms
+2025-10-31 00:24:36.485 -03:00 [INF] User profile is available. Using 'C:\Users\eduar\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-10-31 00:24:36.647 -03:00 [INF] Now listening on: https://localhost:5001
+2025-10-31 00:24:36.648 -03:00 [INF] Now listening on: http://localhost:5000
+2025-10-31 00:24:36.692 -03:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-10-31 00:24:36.692 -03:00 [INF] Hosting environment: Development
+2025-10-31 00:24:36.693 -03:00 [INF] Content root path: C:\Users\eduar\source\repos\ejmossmann-avanade-api\AvanadeBlog.Api
+2025-10-31 00:24:37.055 -03:00 [INF] Request starting HTTP/2 GET https://localhost:5001/_framework/aspnetcore-browser-refresh.js - null null
+2025-10-31 00:24:37.055 -03:00 [INF] Request starting HTTP/2 GET https://localhost:5001/_vs/browserLink - null null
+2025-10-31 00:24:37.065 -03:00 [INF] Request finished HTTP/2 GET https://localhost:5001/_framework/aspnetcore-browser-refresh.js - 200 16515 application/javascript; charset=utf-8 12.8604ms
+2025-10-31 00:24:37.087 -03:00 [INF] Request finished HTTP/2 GET https://localhost:5001/_vs/browserLink - 200 null text/javascript; charset=UTF-8 34.8156ms
+2025-10-31 00:24:37.107 -03:00 [INF] Request starting HTTP/2 GET https://localhost:5001/swagger/v1/swagger.json - null null
+2025-10-31 00:24:37.121 -03:00 [INF] HTTP GET /swagger/v1/swagger.json responded 200 in 8.5878 ms
+2025-10-31 00:24:37.123 -03:00 [INF] Request finished HTTP/2 GET https://localhost:5001/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 15.5604ms
+2025-10-31 00:24:41.158 -03:00 [INF] Request starting HTTP/2 POST https://localhost:5001/api/login - application/json 54
+2025-10-31 00:24:41.287 -03:00 [INF] Executing endpoint 'AvanadeBlog.Api.Controllers.LoginController.Login (AvanadeBlog.Api)'
+2025-10-31 00:24:41.295 -03:00 [INF] Route matched with {action = "Login", controller = "Login"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Login(Microsoft.AspNetCore.Identity.Data.LoginRequest) on controller AvanadeBlog.Api.Controllers.LoginController (AvanadeBlog.Api).
+2025-10-31 00:24:53.444 -03:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType0`1[[System.String, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-10-31 00:24:53.449 -03:00 [INF] Executed action AvanadeBlog.Api.Controllers.LoginController.Login (AvanadeBlog.Api) in 12150.3823ms
+2025-10-31 00:24:53.450 -03:00 [INF] Executed endpoint 'AvanadeBlog.Api.Controllers.LoginController.Login (AvanadeBlog.Api)'
+2025-10-31 00:24:53.450 -03:00 [INF] HTTP POST /api/login responded 200 in 12289.2229 ms
+2025-10-31 00:24:53.452 -03:00 [INF] Request finished HTTP/2 POST https://localhost:5001/api/login - 200 null application/json; charset=utf-8 12293.3693ms
+2025-10-31 00:25:46.722 -03:00 [INF] Request starting HTTP/2 POST https://localhost:5001/api/posts - application/json 53
+2025-10-31 00:25:46.732 -03:00 [INF] Authorization failed. These requirements were not met:
+RolesAuthorizationRequirement:User.IsInRole must be true for one of the following roles: (USER)
+2025-10-31 00:25:46.734 -03:00 [INF] AuthenticationScheme: Bearer was forbidden.
+2025-10-31 00:25:46.735 -03:00 [INF] HTTP POST /api/posts responded 403 in 7.9695 ms
+2025-10-31 00:25:46.736 -03:00 [INF] Request finished HTTP/2 POST https://localhost:5001/api/posts - 403 0 null 14.6146ms
+2025-10-31 00:29:12.012 -03:00 [INF] User profile is available. Using 'C:\Users\eduar\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-10-31 00:29:12.152 -03:00 [INF] Now listening on: https://localhost:5001
+2025-10-31 00:29:12.153 -03:00 [INF] Now listening on: http://localhost:5000
+2025-10-31 00:29:12.199 -03:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-10-31 00:29:12.199 -03:00 [INF] Hosting environment: Development
+2025-10-31 00:29:12.200 -03:00 [INF] Content root path: C:\Users\eduar\source\repos\ejmossmann-avanade-api\AvanadeBlog.Api
+2025-10-31 00:29:12.470 -03:00 [INF] Request starting HTTP/2 GET https://localhost:5001/_vs/browserLink - null null
+2025-10-31 00:29:12.470 -03:00 [INF] Request starting HTTP/2 GET https://localhost:5001/_framework/aspnetcore-browser-refresh.js - null null
+2025-10-31 00:29:12.486 -03:00 [INF] Request finished HTTP/2 GET https://localhost:5001/_framework/aspnetcore-browser-refresh.js - 200 16515 application/javascript; charset=utf-8 18.1979ms
+2025-10-31 00:29:12.503 -03:00 [INF] Request finished HTTP/2 GET https://localhost:5001/_vs/browserLink - 200 null text/javascript; charset=UTF-8 35.5397ms
+2025-10-31 00:29:12.526 -03:00 [INF] Request starting HTTP/2 GET https://localhost:5001/swagger/v1/swagger.json - null null
+2025-10-31 00:29:12.540 -03:00 [INF] HTTP GET /swagger/v1/swagger.json responded 200 in 9.4659 ms
+2025-10-31 00:29:12.543 -03:00 [INF] Request finished HTTP/2 GET https://localhost:5001/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 17.164ms
+2025-10-31 00:30:21.402 -03:00 [INF] Request starting HTTP/2 POST https://localhost:5001/api/login - application/json 54
+2025-10-31 00:30:21.476 -03:00 [INF] Executing endpoint 'AvanadeBlog.Api.Controllers.LoginController.Login (AvanadeBlog.Api)'
+2025-10-31 00:30:21.485 -03:00 [INF] Route matched with {action = "Login", controller = "Login"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Login(Microsoft.AspNetCore.Identity.Data.LoginRequest) on controller AvanadeBlog.Api.Controllers.LoginController (AvanadeBlog.Api).
+2025-10-31 00:33:36.535 -03:00 [INF] User profile is available. Using 'C:\Users\eduar\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-10-31 00:33:36.700 -03:00 [INF] Now listening on: https://localhost:5001
+2025-10-31 00:33:36.702 -03:00 [INF] Now listening on: http://localhost:5000
+2025-10-31 00:33:36.807 -03:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-10-31 00:33:36.808 -03:00 [INF] Hosting environment: Development
+2025-10-31 00:33:36.809 -03:00 [INF] Content root path: C:\Users\eduar\source\repos\ejmossmann-avanade-api\AvanadeBlog.Api
+2025-10-31 00:33:36.965 -03:00 [INF] Request starting HTTP/2 GET https://localhost:5001/_vs/browserLink - null null
+2025-10-31 00:33:36.965 -03:00 [INF] Request starting HTTP/2 GET https://localhost:5001/_framework/aspnetcore-browser-refresh.js - null null
+2025-10-31 00:33:36.996 -03:00 [INF] Request finished HTTP/2 GET https://localhost:5001/_framework/aspnetcore-browser-refresh.js - 200 16515 application/javascript; charset=utf-8 34.8475ms
+2025-10-31 00:33:37.013 -03:00 [INF] Request finished HTTP/2 GET https://localhost:5001/_vs/browserLink - 200 null text/javascript; charset=UTF-8 52.7501ms
+2025-10-31 00:33:37.043 -03:00 [INF] Request starting HTTP/2 GET https://localhost:5001/swagger/v1/swagger.json - null null
+2025-10-31 00:33:37.062 -03:00 [INF] HTTP GET /swagger/v1/swagger.json responded 200 in 11.7503 ms
+2025-10-31 00:33:37.065 -03:00 [INF] Request finished HTTP/2 GET https://localhost:5001/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 21.75ms
+2025-10-31 00:37:10.428 -03:00 [INF] Request starting HTTP/2 POST https://localhost:5001/api/login - application/json 54
+2025-10-31 00:37:10.526 -03:00 [INF] Executing endpoint 'AvanadeBlog.Api.Controllers.LoginController.Login (AvanadeBlog.Api)'
+2025-10-31 00:37:10.536 -03:00 [INF] Route matched with {action = "Login", controller = "Login"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Login(Microsoft.AspNetCore.Identity.Data.LoginRequest) on controller AvanadeBlog.Api.Controllers.LoginController (AvanadeBlog.Api).
+2025-10-31 00:37:14.076 -03:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType0`1[[System.String, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-10-31 00:37:14.081 -03:00 [INF] Executed action AvanadeBlog.Api.Controllers.LoginController.Login (AvanadeBlog.Api) in 3541.9785ms
+2025-10-31 00:37:14.082 -03:00 [INF] Executed endpoint 'AvanadeBlog.Api.Controllers.LoginController.Login (AvanadeBlog.Api)'
+2025-10-31 00:37:14.082 -03:00 [INF] HTTP POST /api/login responded 200 in 3650.4970 ms
+2025-10-31 00:37:14.083 -03:00 [INF] Request finished HTTP/2 POST https://localhost:5001/api/login - 200 null application/json; charset=utf-8 3655.9847ms
+2025-10-31 00:37:24.549 -03:00 [INF] Request starting HTTP/2 POST https://localhost:5001/api/posts - application/json 53
+2025-10-31 00:37:24.558 -03:00 [INF] Executing endpoint 'AvanadeBlog.Api.Controllers.PostController.PostAsync (AvanadeBlog.Api)'
+2025-10-31 00:37:24.562 -03:00 [INF] Route matched with {action = "Post", controller = "Post"}. Executing controller action with signature System.Threading.Tasks.Task`1[AvanadeBlog.Application.Models.Post.PostCompleteResponse] PostAsync(AvanadeBlog.Application.Models.Post.PostRequest) on controller AvanadeBlog.Api.Controllers.PostController (AvanadeBlog.Api).
+2025-10-31 00:37:24.811 -03:00 [WRN] Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development.
+2025-10-31 00:37:24.907 -03:00 [WRN] You do not have a valid license key for the Lucky Penny software AutoMapper. This is allowed for development and testing scenarios. If you are running in production you are required to have a licensed version. Please visit https://luckypennysoftware.com to obtain a valid license.
+2025-10-31 00:37:24.915 -03:00 [INF] PostController - PostAsync. Request: AvanadeBlog.Application.Models.Post.PostRequest
+2025-10-31 00:37:25.731 -03:00 [INF] Executed DbCommand (26ms) [Parameters=[@__title_0='Title mock' (Size = 255)], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Blog] AS [b]
+        WHERE [b].[Title] = @__title_0) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2025-10-31 00:37:25.825 -03:00 [INF] Executed DbCommand (2ms) [Parameters=[@p0='17bd99b6-47fe-4868-c4df-08de182ecf3c', @p1='Content 1' (Nullable = false) (Size = 4000), @p2='' (Size = 255), @p3='Title mock' (Nullable = false) (Size = 255)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [Blog] ([Id], [Content], [CreatedBy], [Title])
+OUTPUT INSERTED.[Created]
+VALUES (@p0, @p1, @p2, @p3);
+2025-10-31 00:37:25.840 -03:00 [INF] PostService - PostAsync success. Response: AvanadeBlog.Application.Models.Post.PostCompleteResponse
+2025-10-31 00:37:25.843 -03:00 [INF] Executing ObjectResult, writing value of type 'AvanadeBlog.Application.Models.Post.PostCompleteResponse'.
+2025-10-31 00:37:25.847 -03:00 [INF] Executed action AvanadeBlog.Api.Controllers.PostController.PostAsync (AvanadeBlog.Api) in 1283.552ms
+2025-10-31 00:37:25.848 -03:00 [INF] Executed endpoint 'AvanadeBlog.Api.Controllers.PostController.PostAsync (AvanadeBlog.Api)'
+2025-10-31 00:37:25.849 -03:00 [INF] HTTP POST /api/posts responded 200 in 1297.3155 ms
+2025-10-31 00:37:25.854 -03:00 [INF] Request finished HTTP/2 POST https://localhost:5001/api/posts - 200 null application/json; charset=utf-8 1304.4132ms
+2025-10-31 00:37:29.638 -03:00 [INF] Request starting HTTP/2 GET https://localhost:5001/api/posts - null null
+2025-10-31 00:37:29.643 -03:00 [INF] Executing endpoint 'AvanadeBlog.Api.Controllers.PostController.GetAsync (AvanadeBlog.Api)'
+2025-10-31 00:37:29.647 -03:00 [INF] Route matched with {action = "Get", controller = "Post"}. Executing controller action with signature System.Threading.Tasks.Task`1[AvanadeBlog.Domain.PaginatedResult`1[AvanadeBlog.Application.Models.Post.PostResponse]] GetAsync(AvanadeBlog.Domain.FilterParams.PostFilterParams) on controller AvanadeBlog.Api.Controllers.PostController (AvanadeBlog.Api).
+2025-10-31 00:37:29.676 -03:00 [INF] PostController - GetAsync. Request: AvanadeBlog.Domain.FilterParams.PostFilterParams
+2025-10-31 00:37:29.700 -03:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Blog] AS [b]
+2025-10-31 00:37:29.940 -03:00 [INF] Executed DbCommand (4ms) [Parameters=[@__p_0='0', @__p_1='9999'], CommandType='"Text"', CommandTimeout='30']
+SELECT [b0].[Id], [b0].[Content], [b0].[Created], [b0].[CreatedBy], [b0].[Title], [c].[Id], [c].[Content], [c].[Created], [c].[CreatedBy], [c].[PostEntityId], [c].[Title]
+FROM (
+    SELECT [b].[Id], [b].[Content], [b].[Created], [b].[CreatedBy], [b].[Title]
+    FROM [Blog] AS [b]
+    ORDER BY [b].[Created] DESC
+    OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+) AS [b0]
+LEFT JOIN [CommentEntity] AS [c] ON [b0].[Id] = [c].[PostEntityId]
+ORDER BY [b0].[Created] DESC, [b0].[Id]
+2025-10-31 00:37:29.951 -03:00 [INF] PostService - GetAsync success. Response: AvanadeBlog.Domain.PaginatedResult`1[AvanadeBlog.Application.Models.Post.PostResponse]
+2025-10-31 00:37:29.952 -03:00 [INF] Executing ObjectResult, writing value of type 'AvanadeBlog.Domain.PaginatedResult`1[[AvanadeBlog.Application.Models.Post.PostResponse, AvanadeBlog.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-10-31 00:37:29.954 -03:00 [INF] Executed action AvanadeBlog.Api.Controllers.PostController.GetAsync (AvanadeBlog.Api) in 306.0245ms
+2025-10-31 00:37:29.955 -03:00 [INF] Executed endpoint 'AvanadeBlog.Api.Controllers.PostController.GetAsync (AvanadeBlog.Api)'
+2025-10-31 00:37:29.956 -03:00 [INF] HTTP GET /api/posts responded 200 in 315.5985 ms
+2025-10-31 00:37:29.957 -03:00 [INF] Request finished HTTP/2 GET https://localhost:5001/api/posts - 200 null application/json; charset=utf-8 319.5833ms
+2025-10-31 00:37:38.739 -03:00 [INF] Request starting HTTP/2 GET https://localhost:5001/api/posts/bc5a9c63-93f8-4c50-8d86-08de1826918c - null null
+2025-10-31 00:37:38.742 -03:00 [INF] Executing endpoint 'AvanadeBlog.Api.Controllers.PostController.GetByIdAsync (AvanadeBlog.Api)'
+2025-10-31 00:37:38.745 -03:00 [INF] Route matched with {action = "GetById", controller = "Post"}. Executing controller action with signature System.Threading.Tasks.Task`1[AvanadeBlog.Application.Models.Post.PostCompleteResponse] GetByIdAsync(System.Guid) on controller AvanadeBlog.Api.Controllers.PostController (AvanadeBlog.Api).
+2025-10-31 00:37:38.755 -03:00 [INF] PostController - GetByIdAsync. Request: "bc5a9c63-93f8-4c50-8d86-08de1826918c"
+2025-10-31 00:37:38.770 -03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__id_0='bc5a9c63-93f8-4c50-8d86-08de1826918c'], CommandType='"Text"', CommandTimeout='30']
+SELECT [b0].[Id], [b0].[Content], [b0].[Created], [b0].[CreatedBy], [b0].[Title], [c].[Id], [c].[Content], [c].[Created], [c].[CreatedBy], [c].[PostEntityId], [c].[Title]
+FROM (
+    SELECT TOP(2) [b].[Id], [b].[Content], [b].[Created], [b].[CreatedBy], [b].[Title]
+    FROM [Blog] AS [b]
+    WHERE [b].[Id] = @__id_0
+) AS [b0]
+LEFT JOIN [CommentEntity] AS [c] ON [b0].[Id] = [c].[PostEntityId]
+ORDER BY [b0].[Id]
+2025-10-31 00:37:38.788 -03:00 [INF] PostService - GetByIdAsync success. Response: AvanadeBlog.Application.Models.Post.PostCompleteResponse
+2025-10-31 00:37:38.788 -03:00 [INF] Executing ObjectResult, writing value of type 'AvanadeBlog.Application.Models.Post.PostCompleteResponse'.
+2025-10-31 00:37:38.790 -03:00 [INF] Executed action AvanadeBlog.Api.Controllers.PostController.GetByIdAsync (AvanadeBlog.Api) in 44.1001ms
+2025-10-31 00:37:38.791 -03:00 [INF] Executed endpoint 'AvanadeBlog.Api.Controllers.PostController.GetByIdAsync (AvanadeBlog.Api)'
+2025-10-31 00:37:38.792 -03:00 [INF] HTTP GET /api/posts/bc5a9c63-93f8-4c50-8d86-08de1826918c responded 200 in 50.3932 ms
+2025-10-31 00:37:38.793 -03:00 [INF] Request finished HTTP/2 GET https://localhost:5001/api/posts/bc5a9c63-93f8-4c50-8d86-08de1826918c - 200 null application/json; charset=utf-8 54.2082ms
+2025-10-31 00:37:56.905 -03:00 [INF] Request starting HTTP/2 POST https://localhost:5001/api/posts - application/json 4921
+2025-10-31 00:37:56.908 -03:00 [INF] Executing endpoint 'AvanadeBlog.Api.Controllers.PostController.PostAsync (AvanadeBlog.Api)'
+2025-10-31 00:37:56.909 -03:00 [INF] Route matched with {action = "Post", controller = "Post"}. Executing controller action with signature System.Threading.Tasks.Task`1[AvanadeBlog.Application.Models.Post.PostCompleteResponse] PostAsync(AvanadeBlog.Application.Models.Post.PostRequest) on controller AvanadeBlog.Api.Controllers.PostController (AvanadeBlog.Api).
+2025-10-31 00:37:56.911 -03:00 [INF] PostController - PostAsync. Request: AvanadeBlog.Application.Models.Post.PostRequest
+2025-10-31 00:37:56.917 -03:00 [ERR] PostService - PostAsync - Validation Error. ValidationError: {"Title":["Title is required and the maximum length is 255 characters."]}
+2025-10-31 00:37:59.738 -03:00 [INF] Executed action AvanadeBlog.Api.Controllers.PostController.PostAsync (AvanadeBlog.Api) in 2827.2906ms
+2025-10-31 00:37:59.739 -03:00 [INF] Executed endpoint 'AvanadeBlog.Api.Controllers.PostController.PostAsync (AvanadeBlog.Api)'
+2025-10-31 00:37:59.750 -03:00 [INF] Request failed with Status Code: "BadRequest". Message: Validation Error
+2025-10-31 00:37:59.764 -03:00 [INF] HTTP POST /api/posts responded 400 in 2856.0441 ms
+2025-10-31 00:37:59.765 -03:00 [INF] Request finished HTTP/2 POST https://localhost:5001/api/posts - 400 null application/json 2859.685ms
+2025-10-31 00:40:20.940 -03:00 [INF] User profile is available. Using 'C:\Users\eduar\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-10-31 00:40:21.068 -03:00 [INF] Now listening on: https://localhost:5001
+2025-10-31 00:40:21.069 -03:00 [INF] Now listening on: http://localhost:5000
+2025-10-31 00:40:21.114 -03:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-10-31 00:40:21.116 -03:00 [INF] Hosting environment: Development
+2025-10-31 00:40:21.116 -03:00 [INF] Content root path: C:\Users\eduar\source\repos\ejmossmann-avanade-api\AvanadeBlog.Api
+2025-10-31 00:40:21.492 -03:00 [INF] Request starting HTTP/2 GET https://localhost:5001/_framework/aspnetcore-browser-refresh.js - null null
+2025-10-31 00:40:21.492 -03:00 [INF] Request starting HTTP/2 GET https://localhost:5001/_vs/browserLink - null null
+2025-10-31 00:40:21.506 -03:00 [INF] Request finished HTTP/2 GET https://localhost:5001/_framework/aspnetcore-browser-refresh.js - 200 16515 application/javascript; charset=utf-8 14.6388ms
+2025-10-31 00:40:21.527 -03:00 [INF] Request finished HTTP/2 GET https://localhost:5001/_vs/browserLink - 200 null text/javascript; charset=UTF-8 38.1131ms
+2025-10-31 00:40:21.548 -03:00 [INF] Request starting HTTP/2 GET https://localhost:5001/swagger/v1/swagger.json - null null
+2025-10-31 00:40:21.565 -03:00 [INF] HTTP GET /swagger/v1/swagger.json responded 200 in 9.9932 ms
+2025-10-31 00:40:21.568 -03:00 [INF] Request finished HTTP/2 GET https://localhost:5001/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 20.1643ms

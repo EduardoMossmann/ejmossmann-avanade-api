@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "uWuaG9wO58A=",
+  "success": true,
+  "projectFilePath": "C:\\Users\\eduar\\repos\\ejmossmann-avanade-api\\src\\AvanadeBlog.Domain\\AvanadeBlog.Domain.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\eduar\\.nuget\\packages\\fluentvalidation\\12.0.0\\fluentvalidation.12.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}
