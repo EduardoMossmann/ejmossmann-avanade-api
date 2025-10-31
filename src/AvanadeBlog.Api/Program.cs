@@ -62,7 +62,7 @@ builder.Services.AddTransient<ExceptionMiddleware>();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(c =>
 {
-    c.SwaggerDoc("v1", new OpenApiInfo { Title = "BloggingPlatform.Api" });
+    c.SwaggerDoc("v1", new OpenApiInfo { Title = "AvanadeBlog.Api" });
     c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
     {
         Description = "Authorization token using the Bearer scheme.",
@@ -102,7 +102,7 @@ app.UseMiddleware<ExceptionMiddleware>();
 if (app.Environment.IsDevelopment() || app.Environment.IsStaging())
 {
     app.UseSwagger();
-    app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "BloggingPlatform.Api"));
+    app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "AvanadeBlog.Api"));
 }
 
 app.UseHttpsRedirection();
